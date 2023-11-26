@@ -10,5 +10,5 @@ interface APIService {
     suspend fun getCases(
         @Header("X-Api-Key") key: String,
         @Query("country") country: String
-    ): CasesData
+    ): List<CasesData>
 }
