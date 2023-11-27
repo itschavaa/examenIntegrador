@@ -12,6 +12,11 @@ import com.example.kotlin.examenintegrador.framework.adapter.Adapter
 import com.example.kotlin.examenintegrador.framework.viewmodel.MainActivityViewModel
 import com.example.kotlin.examenintegrador.framework.viewmodel.viewModelFactory
 
+/**
+ * Main activity
+ *
+ * @constructor Create empty Main activity
+ */
 class MainActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

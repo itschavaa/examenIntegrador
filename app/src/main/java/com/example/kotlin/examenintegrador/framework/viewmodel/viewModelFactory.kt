@@ -4,6 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin.examenintegrador.data.CasesRepository
 
+/**
+ * View model factory
+ *
+ * @property apiRepository
+ * @constructor Create empty View model factory
+ */
 class viewModelFactory(private val apiRepository: CasesRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainActivityViewModel::class.java)) {

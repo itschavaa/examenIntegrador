@@ -12,7 +12,20 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 
 
+/**
+ * View holder
+ *
+ * @property binding
+ * @constructor Create empty View holder
+ */
 class viewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    /**
+     * Bind
+     *
+     * @param covidCase: Set of covid cases
+     * @param region: region of the data
+     * @param context: Layout
+     */
     fun bind(covidCase: Map.Entry<String, CaseDetails>, region: String, context: Context) {
         binding.fecha.text = covidCase.key
         binding.region.text = region

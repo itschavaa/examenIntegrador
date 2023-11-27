@@ -8,9 +8,20 @@ import com.example.kotlin.examenintegrador.data.model.CasesData
 import com.example.kotlin.examenintegrador.databinding.ItemBinding
 import com.example.kotlin.examenintegrador.framework.adapter.viewholders.viewHolder
 
+/**
+ * Adapter
+ *
+ * @property context: layout that is going to be manage
+ * @constructor Create empty Adapter
+ */
 class Adapter(private val context: Context) : RecyclerView.Adapter<viewHolder>() {
     private var data: List<CasesData> = listOf()
 
+    /**
+     * Set List<[CasesData]> in order to display them
+     *
+     * @param newData
+     */
     fun setData(newData: List<CasesData>) {
         data = newData
         notifyDataSetChanged()
