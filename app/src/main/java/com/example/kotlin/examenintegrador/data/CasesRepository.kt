@@ -3,7 +3,21 @@ package com.example.kotlin.examenintegrador.data
 import com.example.kotlin.examenintegrador.data.model.CasesData
 import com.example.kotlin.examenintegrador.data.network.APIClient
 
-class CasesRepository {
+/**
+ * Repository that manage the use of the API
+ *
+ * @constructor
+ *
+ * @param apiClient
+ */
+class CasesRepository(apiClient: APIClient) {
     private val api = APIClient()
-    suspend fun getCases(country: String): CasesData?  = api.getCases(country)
+
+    /**
+     * Get cases from the specific country
+     *
+     * @param country
+     * @return List of [CasesData]
+     */
+    suspend fun getCases(country: String): List<CasesData>?  = api.getCases(country)
 }
