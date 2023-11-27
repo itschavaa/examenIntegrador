@@ -26,30 +26,34 @@ class viewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(bin
      * @param region: region of the data
      * @param context: Layout
      */
-    fun bind(covidCase: Map.Entry<String, CaseDetails>, region: String, context: Context) {
-        binding.fecha.text = covidCase.key
+    fun bind(covidCase: Set<Map.Entry<String, CaseDetails>>, region: String, context: Context) {
+        binding.fecha.text = covidCase.elementAt(500).key
         binding.region.text = region
 
         val pieChart = binding.root.findViewById<PieChart>(R.id.pieChart)
         val entries = ArrayList<PieEntry>()
 
         // Sumar los totales de casos para mostrar en el gráfico de pie
-        var totalCases = covidCase.value.total
-        var newCases = covidCase.value.new
+        var totalCases = covidCase.elementAt(500).value.total
+        var newCases = covidCase.elementAt(500).value.new
 
-        // Agregar los datos al conjunto de datos del gráfico de pie
-        entries.add(PieEntry(newCases.toFloat(), "New Cases"))
-        entries.add(PieEntry((totalCases - newCases).toFloat(), "Old Cases"))
+        if (totalCases != 0) {
+            // Agregar los datos al conjunto de datos del gráfico de pie
+            entries.add(PieEntry(newCases.toFloat(), "New Cases"))
+            entries.add(PieEntry((totalCases - newCases).toFloat(), "Old Cases"))
 
-        val dataSet = PieDataSet(entries,"")
-        dataSet.colors = listOf(Color.BLUE, Color.GREEN) // Colores para las secciones del gráfico
+            val dataSet = PieDataSet(entries, "")
+            dataSet.colors =
+                listOf(Color.BLUE, Color.GREEN) // Colores para las secciones del gráfico
 
-        val data = PieData(dataSet)
-        pieChart.data = data
+            val data = PieData(dataSet)
+            pieChart.data = data
 
-        pieChart.description.isEnabled = true
-        pieChart.description.text = covidCase.value.total.toString() + " COVID-19 cases registered until March 3, 2023"
-        pieChart.invalidate() // Actualizar el gráfico
+            pieChart.description.isEnabled = true
+            pieChart.description.text =
+                covidCase.elementAt(500).value.total.toString() + " COVID-19 cases registered until June 5th, 2021"
+            pieChart.invalidate() // Actualizar el gráfico
+        }
 
 
     }
