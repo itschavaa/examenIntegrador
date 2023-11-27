@@ -35,8 +35,8 @@ class Adapter(private val context: Context) : RecyclerView.Adapter<viewHolder>()
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val data = data[position]
 
-        val lastEntry = data.cases.entries.lastOrNull()
-        lastEntry?.let {
+        val entry = data.cases.entries
+        entry?.let {
             holder.bind(it, data.region, context)
         }
     }
